@@ -4,17 +4,23 @@ var refreshInterval = 20000;
 var twitchSiteName = "twitch";
 var favoriteIcon = "favorite-on.png";
 var nonFavoriteIcon = "favorite-off.png";
+var twitchLoaded = false;
 
 self.port.on("storedFavorites", function loadFavorites(storedFavorites) {
 	favorites = storedFavorites;
+	for(var fav in favorites) {
+		console.log("Loaded favorite " + fav + " from storage.");
+	}
 });
 
-function updateStreamList() {
-	live_streams.sort(function(a, b) { return b.viewers - a.viewers });
+self.port.on("refreshStreams", function(streams) {
+	updateStreamList(streams);
+});
 
+function updateStreamList(streams) {
 	$(".streamer").remove();
 
-	live_streams.forEach(function(stream, index, array) {
+	streams.forEach(function(stream, index, array) {
 		var clazz = "streamer " + ((index % 2 == 0) ? "even" : "odd");
 		var row = $("<tr>", {class: clazz});
 		var favIcon = isFavorite(stream.url) ? favoriteIcon : nonFavoriteIcon;
@@ -40,6 +46,7 @@ function addOrRemoveFavorite() {
 		$(this).attr('src', favoriteIcon);
 		favorites.push(streamUrl);
 		self.port.emit("addFavorite", streamUrl);
+		console.log("Adding favorite streamer " + streamUrl);
 	}
 }
 
@@ -52,6 +59,3 @@ function fetchStreams() {
 		fetchTwitchStreams();
 	}
 }
-
-fetchStreams();
-window.setInterval(fetchStreams, refreshInterval);
