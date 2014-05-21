@@ -1,4 +1,7 @@
-body {font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;}
+body {
+	font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin: 0;
+}
 
 ul#stream-list {list-style-type: none;}
 
@@ -16,7 +19,11 @@ tr {color: #d3d3d3;}
 tr.even {background-color:#3b3b3b;} 
 tr.odd {background-color:#4b4b4b;} 
 
-td.viewers {text-align: right;}
+th {
+	text-shadow: 0 0 5px #000;
+}
+
+.viewers {text-align: right;}
 
 td, th {
 	border:1px solid black;

@@ -9,7 +9,7 @@ var twitchLoaded = false;
 self.port.on("storedFavorites", function loadFavorites(storedFavorites) {
 	favorites = storedFavorites;
 	for(var fav in favorites) {
-		console.log("Loaded favorite " + fav + " from storage.");
+		console.log("Loaded favorite " + favorites[fav] + " from storage.");
 	}
 });
 
@@ -46,7 +46,6 @@ function addOrRemoveFavorite() {
 		$(this).attr('src', favoriteIcon);
 		favorites.push(streamUrl);
 		self.port.emit("addFavorite", streamUrl);
-		console.log("Adding favorite streamer " + streamUrl);
 	}
 }
 
