@@ -1,9 +1,9 @@
 {
-  "name": "twitchtv_add-on",
-  "title": "TwitchTV_add-on",
-  "id": "jid1-j3o4ZOtQFvWJMg",
-  "description": "a basic add-on",
-  "author": "",
+  "name": "lol-stream-browser",
+  "title": "League of Legends Stream Browser",
+  "id": "lol-stream-browser@immobilon.cole",
+  "description": "Displays the top online League of Legends streams from Twitch.tv",
+  "author": "Immobilon",
   "license": "MPL 2.0",
   "version": "0.1"
 }

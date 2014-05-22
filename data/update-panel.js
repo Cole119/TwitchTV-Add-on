@@ -29,11 +29,19 @@ function updateStreamList(streams) {
 		    'click': addOrRemoveFavorite
 		});
 		var icon = $("<img>", {src: stream.logo, class: "icon"});
-		var name = $("<a>", {href: stream.url, class: "streamer-name"}).html(stream.name);
+		var name = $("<a>", {href: "#", class: "streamer-name"}).html(stream.name);
+		name.click(function(e) {
+			e.preventDefault();
+			openStream(stream.url);
+		});
 		var viewers = $("<td>", {class: "viewers"}).html(stream.viewers);
 		row.append($("<td>").append(favorite, icon, name), viewers);
 		$('#stream-table').append(row);
 	});
+}
+
+function openStream(url) {
+	self.port.emit("openStream", url);
 }
 
 function addOrRemoveFavorite() {
