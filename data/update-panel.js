@@ -29,13 +29,15 @@ function updateStreamList(streams) {
 		    'click': addOrRemoveFavorite
 		});
 		var icon = $("<img>", {src: stream.logo, class: "icon"});
-		var name = $("<a>", {href: "#", class: "streamer-name"}).html(stream.name);
+		var name = $("<a>", {href: stream.url, class: "streamer-name"}).html(stream.name);
 		name.click(function(e) {
 			e.preventDefault();
 			openStream(stream.url);
 		});
-		var viewers = $("<td>", {class: "viewers"}).html(stream.viewers);
-		row.append($("<td>").append(favorite, icon, name), viewers);
+		var iconCell = $("<td>", {class: "icon-cell"}).append(favorite, icon);
+		var nameCell = $("<td>").append(name);
+		var viewersCell = $("<td>", {class: "viewers"}).html(stream.viewers);
+		row.append(iconCell, nameCell, viewersCell);
 		$('#stream-table').append(row);
 	});
 }

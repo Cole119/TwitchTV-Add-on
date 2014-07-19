@@ -1,7 +1,7 @@
 {
   "name": "lol-stream-browser",
   "title": "League of Legends Stream Browser",
-  "id": "lol-stream-browser@immobilon.cole",
+  "id": "lol-stream-browser@immobilon.org",
   "description": "Displays the top online League of Legends streams from Twitch.tv",
   "author": "Immobilon",
   "license": "MPL 2.0",
